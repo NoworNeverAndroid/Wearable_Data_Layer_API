@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.nowor_000.sincronizaciondatos">
+
+    <uses-feature android:name="android.hardware.type.watch" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@android:style/Theme.DeviceDefault">
+        <!--ETIQUETA PPARA INDICAR
+              LA VERSION DE GOOGLE PLAY QUE ESTAMOS USANDO -->
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+
+<!-- Add the wearable shared library entry into the wearable app manifest: -->
+        <uses-library android:name="com.google.android.wearable"
+            android:required="true" />
+
+
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name">
+            <intent-filter>
+
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+
+            </intent-filter>
+        </activity>
+
+
+
+
+        <!--SE PONDRA EN MARCHA EL SERVICIO CUANDO SE CONECTE ALGUN DISPOSITIVO -->
+        <service android:name="ServiceListener">
+            <intent-filter>
+
+                <action android:name="com.google.gms.wearable.BIND_LISTENER"/>
+            </intent-filter>
+        </service>
+
+    </application>
+
+
+
+</manifest>
